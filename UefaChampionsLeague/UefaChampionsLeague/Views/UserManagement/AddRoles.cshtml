@@ -1,0 +1,31 @@
+﻿@model UserManagementRoleViewModel
+@{ 
+    ViewData["Title"] = "Add Roles";
+}
+<form  method="post" asp-controller="UserManagement" asp-action="AddRoles" asp-antiforgery="true">
+    <div class="form-horizontal">
+        <h2>add roles for @Model.Email</h2>
+        <hr />
+        <input type="hidden" asp-for="UserId" />
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="NewRole" class="control-label col-md-2"></label>
+            <div class="col-md-4">
+                <select class="form-control" asp-for="NewRole" asp-items="Model.Roles">
+
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-2"></div>
+            <div class="col-md-10">
+                <button type="submit" value="AddRole" class="btn btn-success">Add Role</button>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                <a asp-action="SignUpUsers" asp-controller="UserManagement">Back to list</a>
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,44 @@
+﻿@using Microsoft.AspNetCore.Identity
+@{
+    ViewData["Title"] = "Sign Up Users";
+}
+@model UserManagementRUsersViewModel
+@inject UserManager<ApplicationUser> userManager
+
+<form  method="get" asp-controller="UserManagement" asp-action="SignUpUsers">
+    <div class="form-horizontal">
+        <h2>Sign Up Users</h2>
+        </ hr>
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>Name</td>
+                    <td>Email</td>
+                    <td>DOB</td>
+                    <td>Gender</td>
+                    <td>Country</td>
+                    <td>Club</td>
+                    <td>Role</td>
+                    <td>Options</td>
+                </tr>
+            </thead>
+            @foreach (var item in Model.Users)
+            {
+                <tbody>
+                    <tr>
+                        <td>@item.Name</td>
+                        <td>@item.Email</td>
+                        <td>@item.DOB</td>
+                        <td>@item.Gender</td>
+                        <td>@item.Country</td>
+                        <td>@item.Club</td>
+                        <td>@string.Join(",", await userManager.GetRolesAsync(item))</td>
+                        <td><a asp-controller="UserManagement" asp-action="AddRoles" asp-route-UserId="@item.Id">Add Role</a></td>
+                        <td><a asp-controller="UserManagement" asp-action="EditUser" asp-route-UserId="@item.Id">Edit</a></td>
+                    </tr>
+                </tbody>
+            }
+
+        </table>
+    </div>
+</form>

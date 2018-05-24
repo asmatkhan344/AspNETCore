@@ -1,0 +1,34 @@
+﻿@model ICollection<ClubInfoViewModel>
+<form method="get" asp-controller="League" asp-action="ClubInfo">
+    <div class="form-horizontal">
+        <h2>Club Information</h2>
+        </ hr>
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>ClubId</td>
+                    <td>PlayerId</td>
+                    <td>Club Name</td>
+                    <td>Club Manager</td>
+                    <td>Player Name</td>
+                    <td>Options</td>
+                </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+                <tbody>
+                    <tr>
+                        <td>@item.ClubId</td>
+                        <td>@item.PlayerId</td>
+                        <td>@item.ClubName</td>
+                        <td>@item.ClubManager</td>
+                        <td>@item.Name</td>
+                        <td><a asp-controller="" asp-action="" asp-route-UserId="">Edit</a></td>
+                        <td><a asp-controller="" asp-action="" asp-route-UserId="">Delete</a></td>
+                    </tr>
+                </tbody>
+            }
+
+        </table>
+    </div>
+</form>

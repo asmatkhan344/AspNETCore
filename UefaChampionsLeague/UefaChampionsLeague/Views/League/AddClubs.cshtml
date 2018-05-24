@@ -1,0 +1,39 @@
+﻿@{ 
+    ViewData["Title"] = "Club";
+}
+@model ClubsViewModel
+<form asp-controller="League" asp-action="AddClubs" asp-antiforgery="true">
+    <div class="form-horizontal">
+        <h2>Add Club</h2>
+        <hr />
+        <div asp-validation-summary="ModelOnly"></div>
+        <div class="form-group">
+            <span class="alert-danger">@ViewBag.Error</span>
+            <span class="alert-success">@ViewBag.Message</span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ClubName" class="form-control-label col-md-2"></label>
+            <div class="col-md-6">
+                <input asp-for="ClubName" class="form-control" />
+                <span asp-validation-for="ClubName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="ClubManager" class="form-control-label col-md-2"></label>
+            <div class="col-md-6">
+                <input asp-for="ClubManager" class="form-control" />
+                <span asp-validation-for="ClubManager" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-2"></div>
+            <div class="col-md-10">
+
+                <button type="submit" value="AddClub" class="btn btn-info">Save Club</button>
+            </div>
+        </div>
+        
+    </div>
+
+</form>
